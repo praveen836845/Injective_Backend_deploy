@@ -1,0 +1,7 @@
+openai
+flask
+injective-py
+hypercorn
+colorama
+python-dotenv
+quart
