@@ -37,7 +37,7 @@ class InjectiveTrading(InjectiveBase):
             margin=self.chain_client.composer.calculate_margin(
                 quantity=Decimal(str(quantity)),
                 price=Decimal(str(price)),
-                leverage=Decimal(1),
+                leverage=Decimal(leverage),
                 is_reduce_only=False,
             ),
             order_type=side,

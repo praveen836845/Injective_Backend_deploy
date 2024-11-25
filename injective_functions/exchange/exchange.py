@@ -19,7 +19,7 @@ class InjectiveExchange(InjectiveBase):
         super().__init__(chain_client)
 
     async def get_subaccount_deposits(
-        self, subaccount_idx: int, denoms: List[str] = []
+        self, subaccount_idx: int, denoms: List[str] = None
     ) -> Dict:
         try:
 
@@ -30,7 +30,7 @@ class InjectiveExchange(InjectiveBase):
             deposits = deposits["deposits"]
             denom_decimals = await fetch_decimal_denoms(self.chain_client.network_type)
             human_readable_deposits = {}
-            if len(denoms) > 0:
+            if denoms:
                 for denom in denoms:
                     if denom in deposits:
                         human_readable_deposits[denom] = {

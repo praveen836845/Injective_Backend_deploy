@@ -60,7 +60,7 @@
               },
               "leverage" : {
                 "type": "integer",
-                "description" : "Leverage for the derivative limit order"
+                "description" : "Leverage for the derivative market order"
               }
 
           },
