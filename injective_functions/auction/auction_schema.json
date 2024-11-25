@@ -20,11 +20,11 @@
         },
         {
             "name": "fetch_auctions",
-            "description": "This functions fetches all the historical burn auctions along with current"
+            "description": "This functions fetches all the historical burn auctions along with current burn auction"
         },
         {
             "name": "fetch_latest_auction",
-            "description": "This functions fetches all the latest burn auction round"
+            "description": "This function fetches the latest burn auction round"
         },{
             "name": "fetch_auction_bids",
             "description": "Fetches the bids for the particular auction round",

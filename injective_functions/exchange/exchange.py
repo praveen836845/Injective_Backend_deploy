@@ -123,7 +123,7 @@ class InjectiveExchange(InjectiveBase):
             )
             return {"success": True, "result": res}
         except Exception as e:
-            return {"success": False, "result": detailed_exception_info(e)}
+            return {"success": False, "error": detailed_exception_info(e)}
 
     async def get_mid_price_and_tob_spot_market(self, market_id: str) -> Dict:
         try:
@@ -134,7 +134,7 @@ class InjectiveExchange(InjectiveBase):
             )
             return {"success": True, "result": res}
         except Exception as e:
-            return {"success": False, "result": detailed_exception_info(e)}
+            return {"success": False, "error": detailed_exception_info(e)}
 
     async def get_derivatives_orderbook(
         self, market_id: str, limit: int = None
@@ -223,7 +223,7 @@ class InjectiveExchange(InjectiveBase):
             )
             return {"success": True, "result": orders}
         except Exception as e:
-            return {"success": False, "result": detailed_exception_info(e)}
+            return {"success": False, "error": detailed_exception_info(e)}
 
     async def get_subaccount_positions_in_markets(self, market_ids: List[str]) -> Dict:
         try:
@@ -244,7 +244,7 @@ class InjectiveExchange(InjectiveBase):
                 return {"success": True, "result": position_map}
             return {"success": True, "result": position_map}
         except Exception as e:
-            return {"success": False, "result": detailed_exception_info(e)}
+            return {"success": False, "error": detailed_exception_info(e)}
 
     async def launch_instant_spot_market(
         self,
@@ -256,7 +256,7 @@ class InjectiveExchange(InjectiveBase):
         min_notional: str,
     ) -> Dict:
         try:
-            self.chain_client.init_client()
+            await self.chain_client.init_client()
             msg = self.chain_client.composer.msg_instant_spot_market_launch(
                 sender=self.chain_client.address.to_acc_bech32(),
                 ticker=ticker,
@@ -269,7 +269,7 @@ class InjectiveExchange(InjectiveBase):
             res = await self.chain_client.message_broadcaster.broadcast([msg])
             return {"success": True, "result": res}
         except Exception as e:
-            return {"success": False, "result": detailed_exception_info(e)}
+            return {"success": False, "error": detailed_exception_info(e)}
 
     async def launch_instant_perp_market(
         self,
@@ -289,7 +289,7 @@ class InjectiveExchange(InjectiveBase):
     ) -> Dict:
         try:
 
-            self.chain_client.init_client()
+            await self.chain_client.init_client()
             msg = self.chain_client.composer.msg_instant_perpetual_market_launch(
                 sender=self.chain_client.address.to_acc_bech32(),
                 ticker=ticker,
@@ -309,7 +309,7 @@ class InjectiveExchange(InjectiveBase):
             res = await self.chain_client.message_broadcaster.broadcast([msg])
             return {"success": True, "result": res}
         except Exception as e:
-            return {"success": False, "result": detailed_exception_info(e)}
+            return {"success": False, "error": detailed_exception_info(e)}
 
     async def opt_out_trade_earn_rewards(self) -> Dict:
 

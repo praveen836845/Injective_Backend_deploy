@@ -29,7 +29,7 @@ class InjectiveAuction(InjectiveBase):
             auctions = await self.chain_client.client.fetch_auctions()
             return {"success": True, "result": auctions["auctions"]}
         except Exception as e:
-            return {"success": False, "result": detailed_exception_info(e)}
+            return {"success": False, "error": detailed_exception_info(e)}
 
     async def fetch_latest_auction(self) -> Dict:
         try:
@@ -37,7 +37,7 @@ class InjectiveAuction(InjectiveBase):
             if result["success"]:
                 return {"success": True, "result": result["result"][-1]}
             else:
-                return {"success": False, "result": "failed to fetch auction data"}
+                return {"success": False, "error": "failed to fetch auction data"}
 
         except Exception as e:
             return {"success": False, "result": detailed_exception_info(e)}
@@ -47,4 +47,4 @@ class InjectiveAuction(InjectiveBase):
             auction = await self.chain_client.client.fetch_auction(round=bid_round)
             return {"success": True, "result": auction["bids"]}
         except Exception as e:
-            return {"success": False, "result": detailed_exception_info(e)}
+            return {"success": False, "error": detailed_exception_info(e)}
