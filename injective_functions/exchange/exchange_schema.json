@@ -28,7 +28,7 @@
                   "description": "Subaccount index for the order"
               },
               "leverage" : {
-                "type": "integer",
+                "type": "string",
                 "description" : "Leverage for the derivative limit order"
               }
           },
@@ -59,7 +59,7 @@
                   "description": "Subaccount index for the order"
               },
               "leverage" : {
-                "type": "integer",
+                "type": "string",
                 "description" : "Leverage for the derivative market order"
               }
 

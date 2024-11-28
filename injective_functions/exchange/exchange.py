@@ -59,8 +59,7 @@ class InjectiveExchange(InjectiveBase):
                         )
 
                         human_readable_deposits[denom]["total_balance"] = str(
-                            int(deposit["totalBalance"])
-                            / 10 ** denom_decimals[denom]
+                            int(deposit["totalBalance"]) / 10 ** denom_decimals[denom]
                         )
             return {"success": True, "result": human_readable_deposits}
         except Exception as e:
