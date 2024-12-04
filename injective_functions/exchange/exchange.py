@@ -24,10 +24,12 @@ class InjectiveExchange(InjectiveBase):
         try:
 
             subaccount_id = self.chain_client.address.get_subaccount_id(subaccount_idx)
-            deposits = await self.chain_client.client.fetch_subaccount_deposits(
-                subaccount_id=subaccount_id
+            deposits_response = (
+                await self.chain_client.client.fetch_subaccount_deposits(
+                    subaccount_id=subaccount_id
+                )
             )
-            deposits = deposits["deposits"]
+            deposits = deposits_response["deposits"]
             denom_decimals = await fetch_decimal_denoms(self.chain_client.network_type)
             human_readable_deposits = {}
             if denoms:
