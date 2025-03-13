@@ -32,7 +32,6 @@ class InjectiveBank(InjectiveBase):
                 address=self.chain_client.address.to_acc_bech32()
             )
             bank_balances = bank_balances["balances"]
-
             # hash the bank balances as a kv pair
             human_readable_balances = {}
             for token in bank_balances:
