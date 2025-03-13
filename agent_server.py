@@ -280,8 +280,9 @@ async def chat_endpoint():
         session_id = data.get("session_id", "default")
         private_key = data.get("agent_key", "default")
         agent_id = data.get("agent_id", "default")
+        environment = data.get("environment", "testnet")
         response = await agent.get_response(
-            data["message"], session_id, private_key, agent_id
+            data["message"], session_id, private_key, agent_id, environment
         )
 
         return jsonify(response)
