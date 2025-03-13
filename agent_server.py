@@ -51,7 +51,7 @@ class InjectiveChatAgent:
         self.function_schemas = FunctionSchemaLoader.load_schemas(schema_paths)
 
     async def initialize_agent(
-        self, agent_id: str, private_key: str, environment: str = "mainnet"
+        self, agent_id: str, private_key: str, environment: str = "testnet"
     ) -> None:
         """Initialize Injective clients if they don't exist"""
         if agent_id not in self.agents:
@@ -89,7 +89,7 @@ class InjectiveChatAgent:
         session_id="default",
         private_key=None,
         agent_id=None,
-        environment="mainnet",
+        environment="testnet",
     ):
         """Get response from OpenAI API."""
         await self.initialize_agent(
