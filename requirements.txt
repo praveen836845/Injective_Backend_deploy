@@ -1,5 +1,6 @@
 openai
 flask
+flask_cors
 injective-py
 hypercorn
 colorama
