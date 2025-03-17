@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Start agent_server.py in the background
-python3 agent_server.py &
+python3 agent_server.py --port 8000 &
 
 # Wait for a few seconds to ensure the server is up (optional)
 sleep 5
